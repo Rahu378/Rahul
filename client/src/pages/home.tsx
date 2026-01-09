@@ -31,7 +31,7 @@ function AnimatedText() {
 }
 
 const techBadges = [
-  { icon: Code2, label: "Java & TypeScript" },
+  { icon: Code2, label: "Java, Python & TypeScript" },
   { icon: Cloud, label: "AWS Certified" },
   { icon: Database, label: "PostgreSQL" },
 ];
