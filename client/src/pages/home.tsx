@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Github, Linkedin, Mail, Phone, MapPin, ExternalLink, 
@@ -7,46 +7,212 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import casualPhoto from "@assets/9893EC61-E4BC-4AD4-8910-4732439ABA6E_1_105_c-removebg-preview_1767966428039.png";
+import professionalPhoto from "@assets/cc46671400a562d45b067f7349ea28a4_nw_1767966450949.png";
 
-const roles = [
-  "Software Development Engineer",
-  "Backend Developer",
-  "Cloud Architect",
-  "Systems Designer"
-];
+function SplitHero() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [clipPosition, setClipPosition] = useState(50);
+  const [isHovering, setIsHovering] = useState(false);
 
-function TypewriterText() {
-  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  const [displayText, setDisplayText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    setClipPosition(Math.max(0, Math.min(100, x)));
+  };
 
-  useEffect(() => {
-    const currentRole = roles[currentRoleIndex];
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        if (displayText.length < currentRole.length) {
-          setDisplayText(currentRole.slice(0, displayText.length + 1));
-        } else {
-          setTimeout(() => setIsDeleting(true), 2000);
-        }
-      } else {
-        if (displayText.length > 0) {
-          setDisplayText(displayText.slice(0, -1));
-        } else {
-          setIsDeleting(false);
-          setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
-        }
-      }
-    }, isDeleting ? 50 : 100);
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    setClipPosition(50);
+  };
 
-    return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, currentRoleIndex]);
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
 
   return (
-    <span className="text-primary glow-text">
-      {displayText}
-      <span className="animate-pulse">|</span>
-    </span>
+    <section 
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      onMouseEnter={handleMouseEnter}
+      className="h-screen relative overflow-hidden cursor-none select-none"
+      data-testid="hero-split"
+    >
+      {/* Left Side - Dark/Coder */}
+      <div className="absolute inset-0 bg-[#0a0a0a]">
+        <div className="absolute inset-0 grid-pattern opacity-30" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[150px]" />
+        
+        <div className="h-full flex items-center justify-center">
+          <div className="container mx-auto px-6 grid lg:grid-cols-2 items-center gap-12">
+            <div className="text-left z-10">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="mb-4"
+              >
+                <span className="font-mono text-cyan-400 text-sm tracking-wider">{'<hello world />'}</span>
+              </motion.div>
+              <motion.h1 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-5xl md:text-7xl font-bold mb-4 tracking-tight"
+              >
+                <span className="text-white">I'm </span>
+                <span className="text-cyan-400">Rahul</span>
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-2xl md:text-4xl font-light text-gray-400 mb-6"
+              >
+                Backend Engineer
+              </motion.p>
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="text-gray-500 max-w-md font-mono text-sm"
+              >
+                Building scalable systems with AWS, Java & TypeScript
+              </motion.p>
+            </div>
+            
+            <div className="relative flex justify-center lg:justify-end">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent z-10" />
+                <img 
+                  src={casualPhoto} 
+                  alt="Rahul Casual"
+                  className="h-[500px] md:h-[600px] object-contain object-bottom filter grayscale contrast-110"
+                />
+                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Right Side - Light/Professional */}
+      <div 
+        className="absolute inset-0 bg-[#f5f5f5]"
+        style={{ 
+          clipPath: `polygon(${clipPosition}% 0, 100% 0, 100% 100%, ${clipPosition}% 100%)`,
+          transition: isHovering ? 'none' : 'clip-path 0.5s ease-out'
+        }}
+      >
+        <div className="h-full flex items-center justify-center">
+          <div className="container mx-auto px-6 grid lg:grid-cols-2 items-center gap-12">
+            <div className="text-left z-10">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="mb-4"
+              >
+                <span className="font-mono text-gray-500 text-sm tracking-wider">Software Developer</span>
+              </motion.div>
+              <motion.h1 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-5xl md:text-7xl font-bold mb-4 tracking-tight"
+              >
+                <span className="text-gray-800">I'm </span>
+                <span className="text-blue-600">Rahul</span>
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-2xl md:text-4xl font-light text-gray-600 mb-6"
+              >
+                Cloud Architect
+              </motion.p>
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="text-gray-500 max-w-md text-sm"
+              >
+                AWS Certified • Distributed Systems • Microservices
+              </motion.p>
+            </div>
+            
+            <div className="relative flex justify-center lg:justify-end">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#f5f5f5] via-transparent to-transparent z-10" />
+                <img 
+                  src={professionalPhoto} 
+                  alt="Rahul Professional"
+                  className="h-[500px] md:h-[600px] object-contain object-bottom"
+                />
+                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#f5f5f5] to-transparent" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Center Divider Line */}
+      <div 
+        className="absolute top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-400 via-purple-500 to-blue-500 z-20 pointer-events-none"
+        style={{ 
+          left: `${clipPosition}%`,
+          transform: 'translateX(-50%)',
+          transition: isHovering ? 'none' : 'left 0.5s ease-out',
+          boxShadow: '0 0 20px rgba(0,255,255,0.5), 0 0 40px rgba(0,255,255,0.3)'
+        }}
+      />
+
+      {/* Custom Cursor */}
+      <div 
+        className="fixed w-16 h-16 rounded-full border-2 border-white/50 pointer-events-none z-50 mix-blend-difference flex items-center justify-center"
+        style={{
+          left: `${clipPosition}%`,
+          top: '50%',
+          transform: 'translate(-50%, -50%)',
+          transition: isHovering ? 'none' : 'left 0.5s ease-out',
+          opacity: isHovering ? 1 : 0
+        }}
+      >
+        <div className="flex items-center gap-1 text-white text-xs font-mono">
+          <span>←</span>
+          <span>→</span>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30"
+      >
+        <a href="#about" className="flex flex-col items-center text-gray-400 hover:text-cyan-400 transition-colors">
+          <span className="text-xs font-mono mb-2">Scroll</span>
+          <ChevronDown className="w-5 h-5 animate-bounce" />
+        </a>
+      </motion.div>
+
+      {/* Social Links */}
+      <div className="absolute bottom-8 left-8 z-30 hidden md:flex flex-col gap-4">
+        <a href="https://linkedin.com/in/chidipudi45" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors" data-testid="link-linkedin">
+          <Linkedin className="w-5 h-5" />
+        </a>
+        <a href="mailto:rahulchidipudi45@gmail.com" className="text-gray-400 hover:text-cyan-400 transition-colors" data-testid="link-email">
+          <Mail className="w-5 h-5" />
+        </a>
+        <a href="tel:8565269115" className="text-gray-400 hover:text-cyan-400 transition-colors" data-testid="link-phone">
+          <Phone className="w-5 h-5" />
+        </a>
+      </div>
+    </section>
   );
 }
 
@@ -90,100 +256,6 @@ function Navigation() {
         </div>
       </div>
     </motion.nav>
-  );
-}
-
-function Hero() {
-  return (
-    <section className="min-h-screen relative flex items-center justify-center overflow-hidden grid-pattern">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
-      
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-pulse-slow" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[120px] animate-pulse-slow" style={{ animationDelay: "2s" }} />
-
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl"
-        >
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-            className="flex items-center gap-3 mb-6"
-          >
-            <Terminal className="w-5 h-5 text-primary" />
-            <span className="font-mono text-primary text-sm">Hello World, I'm</span>
-          </motion.div>
-
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 tracking-tight">
-            <span className="text-gradient">Rahul Reddy</span>
-            <br />
-            <span className="text-foreground">Chidipudi</span>
-          </h1>
-
-          <div className="text-2xl md:text-3xl font-medium mb-8 h-12">
-            <TypewriterText />
-          </div>
-
-          <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
-            Building and running backend services on AWS with Java, TypeScript, 
-            PostgreSQL, and DynamoDB. Turning fuzzy requirements into fault-tolerant 
-            systems that scale.
-          </p>
-
-          <div className="flex flex-wrap gap-4 mb-12">
-            <Button size="lg" className="glow group" data-testid="button-contact">
-              Get in Touch
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button size="lg" variant="outline" className="border-primary/50 hover:bg-primary/10" data-testid="button-projects">
-              View Projects
-            </Button>
-          </div>
-
-          <div className="flex items-center gap-6">
-            <a
-              href="https://linkedin.com/in/chidipudi45"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              data-testid="link-linkedin"
-            >
-              <Linkedin className="w-6 h-6" />
-            </a>
-            <a
-              href="mailto:rahulchidipudi45@gmail.com"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              data-testid="link-email"
-            >
-              <Mail className="w-6 h-6" />
-            </a>
-            <a
-              href="tel:8565269115"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              data-testid="link-phone"
-            >
-              <Phone className="w-6 h-6" />
-            </a>
-          </div>
-        </motion.div>
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <a href="#about" className="flex flex-col items-center text-muted-foreground hover:text-primary transition-colors">
-          <span className="text-xs font-mono mb-2">Scroll</span>
-          <ChevronDown className="w-5 h-5 animate-bounce" />
-        </a>
-      </motion.div>
-    </section>
   );
 }
 
@@ -680,7 +752,7 @@ export default function Home() {
   return (
     <main className="noise">
       <Navigation />
-      <Hero />
+      <SplitHero />
       <About />
       <Experience />
       <Skills />
