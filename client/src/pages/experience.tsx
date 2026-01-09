@@ -78,47 +78,47 @@ export default function Experience() {
 
   return (
     <PageWrapper>
-      <div className="container mx-auto px-6 py-16 relative z-10">
+      <div className="container mx-auto px-6 lg:px-8 xl:px-12 2xl:px-16 py-16 lg:py-20 xl:py-24 relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-12 lg:mb-16 xl:mb-20"
         >
-          <div className="flex items-center gap-4 mb-4">
-            <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent text-white shadow-lg">
-              <Briefcase className="w-5 h-5" />
+          <div className="flex items-center gap-4 mb-4 lg:mb-6">
+            <div className="p-2 lg:p-3 xl:p-4 rounded-xl bg-gradient-to-br from-primary to-accent text-white shadow-lg">
+              <Briefcase className="w-5 h-5 lg:w-6 lg:h-6 xl:w-7 xl:h-7" />
             </div>
-            <span className="text-sm font-semibold text-primary tracking-wider uppercase">Experience</span>
+            <span className="text-sm lg:text-base xl:text-lg font-semibold text-primary tracking-wider uppercase">Experience</span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-gray-900">
             Where I've <span className="text-gradient">Worked</span>
           </h1>
         </motion.div>
 
-        <div className="grid lg:grid-cols-[300px_1fr] gap-8 mb-24">
+        <div className="grid lg:grid-cols-[300px_1fr] xl:grid-cols-[350px_1fr] 2xl:grid-cols-[400px_1fr] gap-6 lg:gap-8 xl:gap-12 mb-20 lg:mb-24 xl:mb-28">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0"
+            className="flex lg:flex-col gap-3 lg:gap-4 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0"
           >
             {experiences.map((exp, index) => (
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`px-6 py-4 text-left rounded-xl font-medium transition-all duration-300 whitespace-nowrap lg:whitespace-normal border ${
+                className={`px-5 lg:px-6 xl:px-8 py-4 lg:py-5 xl:py-6 text-left rounded-xl lg:rounded-2xl font-medium transition-all duration-300 whitespace-nowrap lg:whitespace-normal border ${
                   activeIndex === index
                     ? "bg-primary text-white shadow-lg border-primary glow"
                     : "bg-white/80 backdrop-blur-sm text-gray-600 hover:text-primary hover:border-primary/30 border-white/50 shadow-sm"
                 }`}
                 data-testid={`button-experience-${index}`}
               >
-                <div className="flex items-center gap-3">
-                  <Building2 className="w-5 h-5 flex-shrink-0" />
+                <div className="flex items-center gap-3 lg:gap-4">
+                  <Building2 className="w-5 h-5 lg:w-6 lg:h-6 xl:w-7 xl:h-7 flex-shrink-0" />
                   <div>
-                    <div className="font-semibold">{exp.company}</div>
-                    <div className="text-xs opacity-70">{exp.type}</div>
+                    <div className="font-semibold text-base lg:text-lg xl:text-xl">{exp.company}</div>
+                    <div className="text-xs lg:text-sm xl:text-base opacity-70">{exp.type}</div>
                   </div>
                 </div>
               </button>
@@ -132,39 +132,39 @@ export default function Experience() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -30 }}
               transition={{ duration: 0.4 }}
-              className="glass-card rounded-2xl p-8"
+              className="glass-card rounded-2xl lg:rounded-3xl p-6 lg:p-8 xl:p-10 2xl:p-12"
             >
-              <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
+              <div className="flex flex-wrap items-start justify-between gap-4 mb-6 lg:mb-8">
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold text-gray-900 mb-2">
                     {experiences[activeIndex].title}
                   </h3>
-                  <p className="text-xl text-primary font-semibold">
+                  <p className="text-lg lg:text-xl xl:text-2xl text-primary font-semibold">
                     @ {experiences[activeIndex].company}
                   </p>
                 </div>
                 <div className="text-right">
-                  <div className="flex items-center gap-2 text-gray-500 text-sm mb-1">
-                    <Calendar className="w-4 h-4" />
+                  <div className="flex items-center gap-2 text-gray-500 text-sm lg:text-base xl:text-lg mb-1">
+                    <Calendar className="w-4 h-4 lg:w-5 lg:h-5" />
                     {experiences[activeIndex].period}
                   </div>
-                  <div className="flex items-center gap-2 text-gray-500 text-sm">
-                    <MapPin className="w-4 h-4" />
+                  <div className="flex items-center gap-2 text-gray-500 text-sm lg:text-base xl:text-lg">
+                    <MapPin className="w-4 h-4 lg:w-5 lg:h-5" />
                     {experiences[activeIndex].location}
                   </div>
                 </div>
               </div>
 
-              <ul className="space-y-4">
+              <ul className="space-y-4 lg:space-y-5 xl:space-y-6">
                 {experiences[activeIndex].highlights.map((highlight, index) => (
                   <motion.li
                     key={index}
                     initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
-                    className="flex gap-4 text-gray-600"
+                    className="flex gap-4 text-gray-600 text-base lg:text-lg xl:text-xl"
                   >
-                    <Zap className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
+                    <Zap className="w-4 h-4 lg:w-5 lg:h-5 xl:w-6 xl:h-6 text-primary flex-shrink-0 mt-1" />
                     <span>{highlight}</span>
                   </motion.li>
                 ))}
@@ -178,23 +178,23 @@ export default function Experience() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-3">
-            <ChevronRight className="w-6 h-6 text-primary" />
+          <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-6 lg:mb-8 xl:mb-10 flex items-center gap-3">
+            <ChevronRight className="w-6 h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8 text-primary" />
             Leadership Experience
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-4 lg:gap-6 xl:gap-8">
             {leadership.map((item, index) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 + index * 0.1 }}
-                className="glass-card rounded-2xl p-6 hover-lift"
+                className="glass-card rounded-2xl lg:rounded-3xl p-6 lg:p-8 xl:p-10 hover-lift"
               >
-                <h3 className="font-semibold text-lg text-gray-900 mb-1">{item.title}</h3>
-                <p className="text-primary text-sm font-medium mb-2">{item.org}</p>
-                <p className="text-gray-400 text-xs mb-4">{item.period}</p>
-                <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                <h3 className="font-semibold text-lg lg:text-xl xl:text-2xl text-gray-900 mb-1">{item.title}</h3>
+                <p className="text-primary text-sm lg:text-base xl:text-lg font-medium mb-2">{item.org}</p>
+                <p className="text-gray-400 text-xs lg:text-sm xl:text-base mb-4">{item.period}</p>
+                <p className="text-gray-600 text-sm lg:text-base xl:text-lg leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </div>

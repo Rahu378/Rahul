@@ -36,14 +36,14 @@ export default function Navigation() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled 
-            ? "bg-white/90 backdrop-blur-xl shadow-sm py-3 border-b border-gray-100" 
-            : "py-5 bg-transparent"
+            ? "bg-white/90 backdrop-blur-xl shadow-sm py-3 lg:py-4 border-b border-gray-100" 
+            : "py-4 lg:py-6 bg-transparent"
         }`}
       >
-        <div className="container mx-auto px-6 flex items-center justify-between">
+        <div className="container mx-auto px-6 lg:px-8 xl:px-12 2xl:px-16 flex items-center justify-between max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px]">
           <Link href="/">
             <motion.span 
-              className="text-2xl font-bold cursor-pointer"
+              className="text-2xl lg:text-3xl xl:text-4xl font-bold cursor-pointer"
               whileHover={{ scale: 1.05 }}
               data-testid="link-logo"
             >
@@ -52,14 +52,14 @@ export default function Navigation() {
             </motion.span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
             {navItems.map((item, index) => (
               <Link key={item.name} href={item.path}>
                 <motion.span
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className={`px-4 py-2 text-sm font-medium cursor-pointer rounded-full transition-all duration-300 ${
+                  className={`px-4 xl:px-5 2xl:px-6 py-2 xl:py-2.5 2xl:py-3 text-sm lg:text-base xl:text-lg font-medium cursor-pointer rounded-full transition-all duration-300 ${
                     location === item.path
                       ? "text-white bg-primary shadow-md"
                       : "text-gray-600 hover:text-primary hover:bg-primary/5"
@@ -73,7 +73,7 @@ export default function Navigation() {
           </div>
 
           <div className="hidden lg:block">
-            <Button className="rounded-full shadow-md glow" data-testid="button-resume">
+            <Button className="rounded-full shadow-md glow text-sm lg:text-base xl:text-lg px-5 lg:px-6 xl:px-8 py-2 lg:py-2.5 xl:py-3 h-auto" data-testid="button-resume">
               Download CV
             </Button>
           </div>

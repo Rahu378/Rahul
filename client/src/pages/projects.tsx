@@ -49,90 +49,90 @@ const projects = [
 export default function Projects() {
   return (
     <PageWrapper>
-      <div className="container mx-auto px-6 py-16 relative z-10">
+      <div className="container mx-auto px-6 lg:px-8 xl:px-12 2xl:px-16 py-16 lg:py-20 xl:py-24 relative z-10 max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-12 lg:mb-16 xl:mb-20"
         >
-          <div className="flex items-center gap-4 mb-4">
-            <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent text-white shadow-lg">
-              <FolderOpen className="w-5 h-5" />
+          <div className="flex items-center gap-4 mb-4 lg:mb-6">
+            <div className="p-2 lg:p-3 xl:p-4 rounded-xl bg-gradient-to-br from-primary to-accent text-white shadow-lg">
+              <FolderOpen className="w-5 h-5 lg:w-6 lg:h-6 xl:w-7 xl:h-7" />
             </div>
-            <span className="text-sm font-semibold text-primary tracking-wider uppercase">Projects</span>
+            <span className="text-sm lg:text-base xl:text-lg font-semibold text-primary tracking-wider uppercase">Projects</span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-gray-900">
             Things I've <span className="text-gradient">Built</span>
           </h1>
         </motion.div>
 
-        <div className="space-y-8">
+        <div className="space-y-6 lg:space-y-8 xl:space-y-10">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
-              className="glass-card rounded-3xl overflow-hidden hover-lift"
+              className="glass-card rounded-2xl lg:rounded-3xl overflow-hidden hover-lift"
             >
-              <div className="grid lg:grid-cols-[1fr_280px]">
-                <div className="p-8 lg:p-10">
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className={`p-3 rounded-xl bg-gradient-to-br ${project.color} shadow-lg`}>
-                      <project.icon className="w-6 h-6 text-white" />
+              <div className="grid lg:grid-cols-[1fr_280px] xl:grid-cols-[1fr_320px] 2xl:grid-cols-[1fr_380px]">
+                <div className="p-6 lg:p-8 xl:p-10 2xl:p-12">
+                  <div className="flex items-start gap-4 mb-6 lg:mb-8">
+                    <div className={`p-3 lg:p-4 xl:p-5 rounded-xl lg:rounded-2xl bg-gradient-to-br ${project.color} shadow-lg`}>
+                      <project.icon className="w-6 h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8 text-white" />
                     </div>
                     <div>
-                      <p className="text-primary text-sm font-semibold mb-1">{project.subtitle}</p>
-                      <h3 className="text-2xl font-bold text-gray-900">{project.title}</h3>
+                      <p className="text-primary text-sm lg:text-base xl:text-lg font-semibold mb-1">{project.subtitle}</p>
+                      <h3 className="text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold text-gray-900">{project.title}</h3>
                     </div>
                   </div>
 
-                  <p className="text-gray-600 leading-relaxed mb-6">
+                  <p className="text-gray-600 text-base lg:text-lg xl:text-xl leading-relaxed mb-6 lg:mb-8">
                     {project.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="flex flex-wrap gap-2 lg:gap-3 mb-6 lg:mb-8">
                     {project.tags.map((tag) => (
                       <Badge
                         key={tag}
-                        className="bg-primary/10 text-primary border-0 text-xs"
+                        className="bg-primary/10 text-primary border-0 text-xs lg:text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-1"
                       >
                         {tag}
                       </Badge>
                     ))}
                   </div>
 
-                  <div className="flex gap-6">
+                  <div className="flex gap-6 lg:gap-8">
                     <a
                       href="#"
-                      className="flex items-center gap-2 text-gray-500 hover:text-primary transition-colors text-sm font-medium"
+                      className="flex items-center gap-2 text-gray-500 hover:text-primary transition-colors text-sm lg:text-base xl:text-lg font-medium"
                       data-testid={`link-project-github-${index}`}
                     >
-                      <Github className="w-4 h-4" />
+                      <Github className="w-4 h-4 lg:w-5 lg:h-5 xl:w-6 xl:h-6" />
                       <span>Source Code</span>
                     </a>
                     <a
                       href="#"
-                      className="flex items-center gap-2 text-gray-500 hover:text-primary transition-colors text-sm font-medium"
+                      className="flex items-center gap-2 text-gray-500 hover:text-primary transition-colors text-sm lg:text-base xl:text-lg font-medium"
                       data-testid={`link-project-demo-${index}`}
                     >
-                      <ExternalLink className="w-4 h-4" />
+                      <ExternalLink className="w-4 h-4 lg:w-5 lg:h-5 xl:w-6 xl:h-6" />
                       <span>Live Demo</span>
                     </a>
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-gray-50/80 to-white/80 backdrop-blur-sm p-8 lg:p-10 flex flex-col justify-center border-l border-gray-100/50">
-                  <div className="flex items-center gap-2 text-sm font-medium text-gray-400 mb-6">
-                    <TrendingUp className="w-4 h-4" />
+                <div className="bg-gradient-to-br from-gray-50/80 to-white/80 backdrop-blur-sm p-6 lg:p-8 xl:p-10 2xl:p-12 flex flex-col justify-center border-l border-gray-100/50">
+                  <div className="flex items-center gap-2 text-sm lg:text-base font-medium text-gray-400 mb-6 lg:mb-8">
+                    <TrendingUp className="w-4 h-4 lg:w-5 lg:h-5" />
                     <span className="uppercase tracking-wider">Key Metrics</span>
                   </div>
-                  <div className="space-y-6">
+                  <div className="space-y-6 lg:space-y-8">
                     {project.metrics.map((metric) => (
                       <div key={metric.label}>
-                        <div className="text-2xl font-bold text-gray-900 mb-1">{metric.value}</div>
-                        <div className="text-sm text-gray-500">{metric.label}</div>
+                        <div className="text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-gray-900 mb-1">{metric.value}</div>
+                        <div className="text-sm lg:text-base xl:text-lg text-gray-500">{metric.label}</div>
                       </div>
                     ))}
                   </div>
@@ -146,18 +146,18 @@ export default function Projects() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-16 text-center"
+          className="mt-12 lg:mt-16 xl:mt-20 text-center"
         >
-          <p className="text-gray-500 mb-6">
+          <p className="text-gray-500 text-base lg:text-lg xl:text-xl mb-6">
             Interested in seeing more of my work?
           </p>
           <a
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition-colors shadow-lg"
+            className="inline-flex items-center gap-2 lg:gap-3 px-6 lg:px-8 xl:px-10 py-3 lg:py-4 xl:py-5 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition-colors shadow-lg text-base lg:text-lg xl:text-xl"
           >
-            <Github className="w-5 h-5" />
+            <Github className="w-5 h-5 lg:w-6 lg:h-6 xl:w-7 xl:h-7" />
             <span className="font-medium">View GitHub Profile</span>
           </a>
         </motion.div>
