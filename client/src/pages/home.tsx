@@ -101,7 +101,7 @@ export default function Home() {
               transition={{ delay: 0.5 }}
               className="text-gray-500 text-lg lg:text-xl xl:text-2xl 2xl:text-2xl max-w-xl lg:max-w-2xl xl:max-w-3xl mb-8 lg:mb-10 leading-relaxed"
             >
-              Building scalable backend systems with AWS, Java, and TypeScript. 
+              Building scalable backend systems with AWS, Java, Python, and TypeScript. 
               Turning complex requirements into elegant, fault-tolerant architectures 
               that perform under real-world pressure.
             </motion.p>
