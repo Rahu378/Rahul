@@ -77,8 +77,8 @@ export default function Experience() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <PageWrapper className="bg-white">
-      <div className="container mx-auto px-6 py-16">
+    <PageWrapper>
+      <div className="container mx-auto px-6 py-16 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -86,7 +86,7 @@ export default function Experience() {
           className="mb-16"
         >
           <div className="flex items-center gap-4 mb-4">
-            <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent text-white">
+            <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent text-white shadow-lg">
               <Briefcase className="w-5 h-5" />
             </div>
             <span className="text-sm font-semibold text-primary tracking-wider uppercase">Experience</span>
@@ -109,8 +109,8 @@ export default function Experience() {
                 onClick={() => setActiveIndex(index)}
                 className={`px-6 py-4 text-left rounded-xl font-medium transition-all duration-300 whitespace-nowrap lg:whitespace-normal border ${
                   activeIndex === index
-                    ? "bg-primary text-white shadow-lg border-primary"
-                    : "bg-white text-gray-600 hover:text-primary hover:border-primary/30 border-gray-100 shadow-sm"
+                    ? "bg-primary text-white shadow-lg border-primary glow"
+                    : "bg-white/80 backdrop-blur-sm text-gray-600 hover:text-primary hover:border-primary/30 border-white/50 shadow-sm"
                 }`}
                 data-testid={`button-experience-${index}`}
               >
@@ -132,7 +132,7 @@ export default function Experience() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -30 }}
               transition={{ duration: 0.4 }}
-              className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100"
+              className="glass-card rounded-2xl p-8"
             >
               <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
                 <div>
@@ -189,7 +189,7 @@ export default function Experience() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 + index * 0.1 }}
-                className="bg-white rounded-2xl p-6 hover-lift shadow-sm border border-gray-100"
+                className="glass-card rounded-2xl p-6 hover-lift"
               >
                 <h3 className="font-semibold text-lg text-gray-900 mb-1">{item.title}</h3>
                 <p className="text-primary text-sm font-medium mb-2">{item.org}</p>

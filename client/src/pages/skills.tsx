@@ -63,8 +63,8 @@ const aiTools = [
 
 export default function Skills() {
   return (
-    <PageWrapper className="bg-white">
-      <div className="container mx-auto px-6 py-16">
+    <PageWrapper>
+      <div className="container mx-auto px-6 py-16 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -72,7 +72,7 @@ export default function Skills() {
           className="mb-16"
         >
           <div className="flex items-center gap-4 mb-4">
-            <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent text-white">
+            <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent text-white shadow-lg">
               <Cpu className="w-5 h-5" />
             </div>
             <span className="text-sm font-semibold text-primary tracking-wider uppercase">Skills</span>
@@ -89,7 +89,7 @@ export default function Skills() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="bg-white rounded-2xl p-6 hover-lift card-3d shadow-sm border border-gray-100 group"
+              className="glass-card rounded-2xl p-6 hover-lift card-3d group"
             >
               <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${category.color} mb-4 group-hover:scale-110 transition-transform shadow-lg`}>
                 <category.icon className="w-6 h-6 text-white" />
@@ -114,7 +114,7 @@ export default function Skills() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-10 border border-gray-100"
+          className="glass-card rounded-3xl p-10"
         >
           <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
             <div className="w-1.5 h-8 bg-gradient-to-b from-primary to-accent rounded-full" />
@@ -131,7 +131,7 @@ export default function Skills() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1 + index * 0.1 }}
-                className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:border-primary/30 hover:shadow-md transition-all"
+                className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm border border-white/50 hover:border-primary/30 hover:shadow-md transition-all"
               >
                 <h3 className="font-semibold text-primary mb-2">{tool.name}</h3>
                 <p className="text-sm text-gray-500">{tool.description}</p>
@@ -146,7 +146,7 @@ export default function Skills() {
           transition={{ delay: 1.2, duration: 0.6 }}
           className="mt-16 text-center"
         >
-          <div className="inline-flex items-center gap-4 px-8 py-4 rounded-full bg-gradient-to-r from-primary/5 to-accent/5 border border-primary/10">
+          <div className="inline-flex items-center gap-4 px-8 py-4 rounded-full bg-white/80 backdrop-blur-sm shadow-lg border border-white/50">
             <span className="text-gray-600 font-medium">Always learning, always growing</span>
             <span className="text-2xl">🚀</span>
           </div>

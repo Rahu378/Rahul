@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AnimatePresence } from "framer-motion";
 import Navigation from "@/components/layout/Navigation";
+import AnimatedBackground from "@/components/ui/AnimatedBackground";
 import Home from "@/pages/home";
 import About from "@/pages/about";
 import Experience from "@/pages/experience";
@@ -34,6 +35,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
+        <AnimatedBackground />
         <Navigation />
         <Router />
       </TooltipProvider>

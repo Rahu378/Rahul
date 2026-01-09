@@ -35,8 +35,8 @@ const certifications = [
 
 export default function About() {
   return (
-    <PageWrapper className="bg-white">
-      <div className="container mx-auto px-6 py-16">
+    <PageWrapper>
+      <div className="container mx-auto px-6 py-16 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -44,7 +44,7 @@ export default function About() {
           className="mb-16"
         >
           <div className="flex items-center gap-4 mb-4">
-            <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent text-white">
+            <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent text-white shadow-lg">
               <User className="w-5 h-5" />
             </div>
             <span className="text-sm font-semibold text-primary tracking-wider uppercase">About Me</span>
@@ -90,8 +90,8 @@ export default function About() {
             className="relative"
           >
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-2xl" />
-              <div className="relative bg-white rounded-3xl p-3 shadow-xl border border-gray-100 overflow-hidden">
+              <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl" />
+              <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-3 shadow-xl border border-white/50 overflow-hidden">
                 <img 
                   src={professionalPhoto} 
                   alt="Rahul Reddy Chidipudi"
@@ -114,7 +114,7 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 + index * 0.1 }}
-              className="bg-white rounded-2xl p-6 text-center hover-lift shadow-sm border border-gray-100 card-3d"
+              className="glass-card rounded-2xl p-6 text-center hover-lift card-3d"
             >
               <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 mb-4">
                 <stat.icon className="w-6 h-6 text-primary" />
@@ -135,7 +135,7 @@ export default function About() {
               <GraduationCap className="w-6 h-6 text-primary" />
               <h2 className="text-2xl font-bold text-gray-900">Education</h2>
             </div>
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+            <div className="glass-card rounded-2xl p-8">
               <h3 className="text-xl font-semibold text-gray-900 mb-2">{education.school}</h3>
               <p className="text-primary font-medium mb-2">{education.degree}</p>
               <p className="text-gray-500 text-sm mb-4">{education.location} • {education.date}</p>
@@ -171,7 +171,7 @@ export default function About() {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.8 + index * 0.1 }}
-                  className="bg-white rounded-xl p-5 flex items-center gap-4 hover-lift shadow-sm border border-gray-100 group"
+                  className="glass-card rounded-xl p-5 flex items-center gap-4 hover-lift group"
                 >
                   <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
                   <span className="text-sm text-gray-700 group-hover:text-gray-900 transition-colors">{cert}</span>

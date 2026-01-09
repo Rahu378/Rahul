@@ -37,8 +37,8 @@ const contactInfo = [
 
 export default function Contact() {
   return (
-    <PageWrapper className="bg-white">
-      <div className="container mx-auto px-6 py-16">
+    <PageWrapper>
+      <div className="container mx-auto px-6 py-16 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -46,7 +46,7 @@ export default function Contact() {
           className="mb-16 text-center max-w-3xl mx-auto"
         >
           <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent text-white">
+            <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent text-white shadow-lg">
               <MessageCircle className="w-5 h-5" />
             </div>
             <span className="text-sm font-semibold text-primary tracking-wider uppercase">Contact</span>
@@ -75,7 +75,7 @@ export default function Contact() {
                     href={item.href}
                     target={item.href.startsWith("http") ? "_blank" : undefined}
                     rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="bg-white rounded-2xl p-6 flex items-center gap-5 hover-lift shadow-sm border border-gray-100 group block"
+                    className="glass-card rounded-2xl p-6 flex items-center gap-5 hover-lift group block"
                     data-testid={`link-contact-${item.label.toLowerCase()}`}
                   >
                     <div className={`p-4 rounded-xl bg-gradient-to-br ${item.color} group-hover:scale-110 transition-transform shadow-lg`}>
@@ -87,7 +87,7 @@ export default function Contact() {
                     </div>
                   </a>
                 ) : (
-                  <div className="bg-white rounded-2xl p-6 flex items-center gap-5 shadow-sm border border-gray-100">
+                  <div className="glass-card rounded-2xl p-6 flex items-center gap-5">
                     <div className={`p-4 rounded-xl bg-gradient-to-br ${item.color} shadow-lg`}>
                       <item.icon className="w-6 h-6 text-white" />
                     </div>
@@ -107,9 +107,8 @@ export default function Contact() {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="relative overflow-hidden rounded-3xl"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary via-accent to-primary animate-gradient" />
-            <div className="absolute inset-[1px] bg-white rounded-3xl" />
-            <div className="relative p-10 text-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary via-accent to-primary opacity-10" />
+            <div className="glass-card rounded-3xl p-10 text-center relative">
               <div className="inline-flex p-4 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 mb-6">
                 <Sparkles className="w-8 h-8 text-primary" />
               </div>
@@ -126,7 +125,7 @@ export default function Contact() {
                   </Button>
                 </a>
                 <a href="tel:8565269115">
-                  <Button size="lg" variant="outline" className="rounded-full border-gray-200 hover:bg-gray-50" data-testid="button-call-now">
+                  <Button size="lg" variant="outline" className="rounded-full border-gray-200 bg-white/50 backdrop-blur-sm hover:bg-white" data-testid="button-call-now">
                     <Phone className="w-4 h-4 mr-2" />
                     Call Now
                   </Button>

@@ -48,8 +48,8 @@ const projects = [
 
 export default function Projects() {
   return (
-    <PageWrapper className="bg-white">
-      <div className="container mx-auto px-6 py-16">
+    <PageWrapper>
+      <div className="container mx-auto px-6 py-16 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -57,7 +57,7 @@ export default function Projects() {
           className="mb-16"
         >
           <div className="flex items-center gap-4 mb-4">
-            <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent text-white">
+            <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent text-white shadow-lg">
               <FolderOpen className="w-5 h-5" />
             </div>
             <span className="text-sm font-semibold text-primary tracking-wider uppercase">Projects</span>
@@ -74,7 +74,7 @@ export default function Projects() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
-              className="bg-white rounded-3xl overflow-hidden hover-lift shadow-sm border border-gray-100"
+              className="glass-card rounded-3xl overflow-hidden hover-lift"
             >
               <div className="grid lg:grid-cols-[1fr_280px]">
                 <div className="p-8 lg:p-10">
@@ -123,7 +123,7 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-gray-50 to-white p-8 lg:p-10 flex flex-col justify-center border-l border-gray-100">
+                <div className="bg-gradient-to-br from-gray-50/80 to-white/80 backdrop-blur-sm p-8 lg:p-10 flex flex-col justify-center border-l border-gray-100/50">
                   <div className="flex items-center gap-2 text-sm font-medium text-gray-400 mb-6">
                     <TrendingUp className="w-4 h-4" />
                     <span className="uppercase tracking-wider">Key Metrics</span>
