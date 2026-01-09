@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Briefcase, MapPin, Calendar, Zap, ChevronRight } from "lucide-react";
+import { Briefcase, MapPin, Calendar, Zap, ChevronRight, Building2 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import Footer from "@/components/layout/Footer";
 
@@ -77,7 +77,7 @@ export default function Experience() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <PageWrapper className="noise">
+    <PageWrapper className="bg-white">
       <div className="container mx-auto px-6 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -86,12 +86,12 @@ export default function Experience() {
           className="mb-16"
         >
           <div className="flex items-center gap-4 mb-4">
-            <div className="p-2 rounded-lg bg-primary/10">
-              <Briefcase className="w-6 h-6 text-primary" />
+            <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent text-white">
+              <Briefcase className="w-5 h-5" />
             </div>
-            <span className="font-mono text-primary text-sm tracking-wider">02. EXPERIENCE</span>
+            <span className="text-sm font-semibold text-primary tracking-wider uppercase">Experience</span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900">
             Where I've <span className="text-gradient">Worked</span>
           </h1>
         </motion.div>
@@ -101,21 +101,26 @@ export default function Experience() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0"
+            className="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0"
           >
             {experiences.map((exp, index) => (
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`px-6 py-4 text-left rounded-xl font-medium transition-all duration-300 whitespace-nowrap lg:whitespace-normal ${
+                className={`px-6 py-4 text-left rounded-xl font-medium transition-all duration-300 whitespace-nowrap lg:whitespace-normal border ${
                   activeIndex === index
-                    ? "bg-primary/10 text-primary border-l-2 border-primary"
-                    : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                    ? "bg-primary text-white shadow-lg border-primary"
+                    : "bg-white text-gray-600 hover:text-primary hover:border-primary/30 border-gray-100 shadow-sm"
                 }`}
                 data-testid={`button-experience-${index}`}
               >
-                <div className="font-semibold">{exp.company}</div>
-                <div className="text-xs opacity-70">{exp.type}</div>
+                <div className="flex items-center gap-3">
+                  <Building2 className="w-5 h-5 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold">{exp.company}</div>
+                    <div className="text-xs opacity-70">{exp.type}</div>
+                  </div>
+                </div>
               </button>
             ))}
           </motion.div>
@@ -127,23 +132,23 @@ export default function Experience() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -30 }}
               transition={{ duration: 0.4 }}
-              className="glass rounded-2xl p-8"
+              className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100"
             >
               <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
                 <div>
-                  <h3 className="text-2xl font-bold mb-2">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
                     {experiences[activeIndex].title}
                   </h3>
-                  <p className="text-xl text-primary font-medium">
+                  <p className="text-xl text-primary font-semibold">
                     @ {experiences[activeIndex].company}
                   </p>
                 </div>
                 <div className="text-right">
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm mb-1">
+                  <div className="flex items-center gap-2 text-gray-500 text-sm mb-1">
                     <Calendar className="w-4 h-4" />
                     {experiences[activeIndex].period}
                   </div>
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm">
+                  <div className="flex items-center gap-2 text-gray-500 text-sm">
                     <MapPin className="w-4 h-4" />
                     {experiences[activeIndex].location}
                   </div>
@@ -157,7 +162,7 @@ export default function Experience() {
                     initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
-                    className="flex gap-4 text-muted-foreground"
+                    className="flex gap-4 text-gray-600"
                   >
                     <Zap className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
                     <span>{highlight}</span>
@@ -173,7 +178,7 @@ export default function Experience() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-3">
             <ChevronRight className="w-6 h-6 text-primary" />
             Leadership Experience
           </h2>
@@ -184,12 +189,12 @@ export default function Experience() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 + index * 0.1 }}
-                className="glass rounded-xl p-6 hover-lift"
+                className="bg-white rounded-2xl p-6 hover-lift shadow-sm border border-gray-100"
               >
-                <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
+                <h3 className="font-semibold text-lg text-gray-900 mb-1">{item.title}</h3>
                 <p className="text-primary text-sm font-medium mb-2">{item.org}</p>
-                <p className="text-muted-foreground text-xs mb-4">{item.period}</p>
-                <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
+                <p className="text-gray-400 text-xs mb-4">{item.period}</p>
+                <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </div>

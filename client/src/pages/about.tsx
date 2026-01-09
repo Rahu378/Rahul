@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { User, Award, Code, Briefcase, GraduationCap, MapPin } from "lucide-react";
+import { User, Award, Code, Briefcase, GraduationCap, MapPin, CheckCircle2 } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import Footer from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/badge";
@@ -35,7 +35,7 @@ const certifications = [
 
 export default function About() {
   return (
-    <PageWrapper className="noise">
+    <PageWrapper className="bg-white">
       <div className="container mx-auto px-6 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,12 +44,12 @@ export default function About() {
           className="mb-16"
         >
           <div className="flex items-center gap-4 mb-4">
-            <div className="p-2 rounded-lg bg-primary/10">
-              <User className="w-6 h-6 text-primary" />
+            <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent text-white">
+              <User className="w-5 h-5" />
             </div>
-            <span className="font-mono text-primary text-sm tracking-wider">01. ABOUT ME</span>
+            <span className="text-sm font-semibold text-primary tracking-wider uppercase">About Me</span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900">
             The Story Behind <span className="text-gradient">The Code</span>
           </h1>
         </motion.div>
@@ -61,27 +61,25 @@ export default function About() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="space-y-6"
           >
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm a software engineer with about <span className="text-primary font-medium">1 year of hands-on experience</span> building 
+            <p className="text-lg text-gray-600 leading-relaxed">
+              I'm a software engineer with about <span className="text-primary font-semibold">1 year of hands-on experience</span> building 
               and running backend services on AWS with Java, TypeScript, PostgreSQL, DynamoDB, and RDS.
             </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg text-gray-600 leading-relaxed">
               I tend to live close to the data—poking at schemas, query plans, and cache layers 
               until reads and writes behave under real traffic. I'm usually the one wiring things 
-              into <span className="text-primary font-medium">API Gateway, Lambda, S3, and CloudWatch</span>, 
+              into <span className="text-primary font-semibold">API Gateway, Lambda, S3, and CloudWatch</span>, 
               adding alarms, dashboards, and runbooks so on-call feels like engineering, not guessing.
             </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg text-gray-600 leading-relaxed">
               I have a habit of taking fuzzy requirements and weird edge cases, turning them 
               into clearer APIs and fault-tolerant flows. I lean on tools like GitHub Copilot 
               and Cursor, but never trust them more than careful code review.
             </p>
 
-            <div className="pt-6">
-              <div className="flex items-center gap-2 text-muted-foreground mb-4">
-                <MapPin className="w-4 h-4 text-primary" />
-                <span>United States (Open to Relocation)</span>
-              </div>
+            <div className="pt-6 flex items-center gap-3 text-gray-500">
+              <MapPin className="w-5 h-5 text-primary" />
+              <span className="font-medium">United States (Open to Relocation)</span>
             </div>
           </motion.div>
 
@@ -92,15 +90,14 @@ export default function About() {
             className="relative"
           >
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl blur-2xl" />
-              <div className="relative glass rounded-2xl p-2 overflow-hidden">
+              <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-2xl" />
+              <div className="relative bg-white rounded-3xl p-3 shadow-xl border border-gray-100 overflow-hidden">
                 <img 
                   src={professionalPhoto} 
                   alt="Rahul Reddy Chidipudi"
-                  className="w-full h-auto rounded-xl"
+                  className="w-full h-auto rounded-2xl"
                 />
               </div>
-              <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-primary/20 rounded-2xl -z-10" />
             </div>
           </motion.div>
         </div>
@@ -117,13 +114,13 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 + index * 0.1 }}
-              className="glass rounded-xl p-6 text-center hover-lift card-3d"
+              className="bg-white rounded-2xl p-6 text-center hover-lift shadow-sm border border-gray-100 card-3d"
             >
-              <div className="inline-flex p-3 rounded-lg bg-primary/10 mb-4">
+              <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 mb-4">
                 <stat.icon className="w-6 h-6 text-primary" />
               </div>
-              <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
-              <div className="text-sm text-muted-foreground">{stat.label}</div>
+              <div className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</div>
+              <div className="text-sm text-gray-500">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>
@@ -136,20 +133,20 @@ export default function About() {
           >
             <div className="flex items-center gap-3 mb-8">
               <GraduationCap className="w-6 h-6 text-primary" />
-              <h2 className="text-2xl font-bold">Education</h2>
+              <h2 className="text-2xl font-bold text-gray-900">Education</h2>
             </div>
-            <div className="glass rounded-xl p-8">
-              <h3 className="text-xl font-semibold mb-2">{education.school}</h3>
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">{education.school}</h3>
               <p className="text-primary font-medium mb-2">{education.degree}</p>
-              <p className="text-muted-foreground text-sm mb-4">{education.location} • {education.date}</p>
+              <p className="text-gray-500 text-sm mb-4">{education.location} • {education.date}</p>
               <Badge className="bg-primary/10 text-primary border-0 mb-6">
                 {education.scholarship}
               </Badge>
-              <div className="pt-6 border-t border-border/50">
-                <p className="text-sm text-muted-foreground font-medium mb-3">Relevant Coursework</p>
+              <div className="pt-6 border-t border-gray-100">
+                <p className="text-sm text-gray-500 font-medium mb-3">Relevant Coursework</p>
                 <div className="flex flex-wrap gap-2">
                   {education.courses.map((course) => (
-                    <Badge key={course} variant="secondary" className="bg-muted/50 text-xs">
+                    <Badge key={course} variant="secondary" className="bg-gray-50 text-gray-600 border-0 text-xs">
                       {course}
                     </Badge>
                   ))}
@@ -165,19 +162,19 @@ export default function About() {
           >
             <div className="flex items-center gap-3 mb-8">
               <Award className="w-6 h-6 text-primary" />
-              <h2 className="text-2xl font-bold">Certifications</h2>
+              <h2 className="text-2xl font-bold text-gray-900">Certifications</h2>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-3">
               {certifications.map((cert, index) => (
                 <motion.div
                   key={cert}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.8 + index * 0.1 }}
-                  className="glass rounded-xl p-5 flex items-center gap-4 hover-lift group"
+                  className="bg-white rounded-xl p-5 flex items-center gap-4 hover-lift shadow-sm border border-gray-100 group"
                 >
-                  <div className="w-3 h-3 rounded-full bg-gradient-to-r from-primary to-accent flex-shrink-0 group-hover:scale-125 transition-transform" />
-                  <span className="text-sm">{cert}</span>
+                  <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+                  <span className="text-sm text-gray-700 group-hover:text-gray-900 transition-colors">{cert}</span>
                 </motion.div>
               ))}
             </div>

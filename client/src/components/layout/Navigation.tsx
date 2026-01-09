@@ -35,17 +35,20 @@ export default function Navigation() {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "glass py-3" : "py-5"
+          scrolled 
+            ? "bg-white/90 backdrop-blur-xl shadow-sm py-3 border-b border-gray-100" 
+            : "py-5 bg-transparent"
         }`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           <Link href="/">
             <motion.span 
-              className="font-mono text-primary text-xl font-bold cursor-pointer"
+              className="text-2xl font-bold cursor-pointer"
               whileHover={{ scale: 1.05 }}
               data-testid="link-logo"
             >
-              RC<span className="text-accent">.</span>
+              <span className="text-gradient">RC</span>
+              <span className="text-primary">.</span>
             </motion.span>
           </Link>
 
@@ -56,10 +59,10 @@ export default function Navigation() {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className={`px-4 py-2 text-sm font-medium cursor-pointer rounded-lg transition-all duration-300 ${
+                  className={`px-4 py-2 text-sm font-medium cursor-pointer rounded-full transition-all duration-300 ${
                     location === item.path
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                      ? "text-white bg-primary shadow-md"
+                      : "text-gray-600 hover:text-primary hover:bg-primary/5"
                   }`}
                   data-testid={`link-nav-${item.name.toLowerCase()}`}
                 >
@@ -70,14 +73,14 @@ export default function Navigation() {
           </div>
 
           <div className="hidden lg:block">
-            <Button className="glow" data-testid="button-resume">
-              Resume
+            <Button className="rounded-full shadow-md glow" data-testid="button-resume">
+              Download CV
             </Button>
           </div>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 text-foreground"
+            className="lg:hidden p-2 text-gray-700 hover:text-primary transition-colors"
             data-testid="button-mobile-menu"
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -94,7 +97,7 @@ export default function Navigation() {
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
             className="fixed inset-0 z-40 lg:hidden"
           >
-            <div className="absolute inset-0 bg-background/95 backdrop-blur-xl" />
+            <div className="absolute inset-0 bg-white" />
             <div className="relative h-full flex flex-col items-center justify-center gap-8">
               {navItems.map((item, index) => (
                 <motion.div
@@ -106,7 +109,7 @@ export default function Navigation() {
                   <Link href={item.path}>
                     <span
                       className={`text-3xl font-bold cursor-pointer transition-colors ${
-                        location === item.path ? "text-primary" : "text-foreground hover:text-primary"
+                        location === item.path ? "text-primary" : "text-gray-800 hover:text-primary"
                       }`}
                     >
                       {item.name}
