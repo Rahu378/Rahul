@@ -4,6 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AnimatePresence } from "framer-motion";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import Navigation from "@/components/layout/Navigation";
 import AnimatedBackground from "@/components/ui/AnimatedBackground";
 import Home from "@/pages/home";
@@ -38,6 +39,7 @@ function App() {
         <AnimatedBackground />
         <Navigation />
         <Router />
+        <SpeedInsights />
       </TooltipProvider>
     </QueryClientProvider>
   );
